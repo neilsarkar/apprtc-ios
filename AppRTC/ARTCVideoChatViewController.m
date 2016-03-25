@@ -58,7 +58,6 @@
     [self.localViewRightConstraint setConstant:0.0f];
     [self.localViewHeightConstraint setConstant:self.view.frame.size.height];
     [self.localViewWidthConstraint setConstant:self.view.frame.size.width];
-    [self.footerViewBottomConstraint setConstant:0.0f];
     
     //Connect to the room
     [self disconnect];
@@ -218,7 +217,6 @@
         
         [self.localViewBottomConstraint setConstant:28.0f];
         [self.localViewRightConstraint setConstant:28.0f];
-        [self.footerViewBottomConstraint setConstant:-80.0f];
         [self.view layoutIfNeeded];
     }];
 }

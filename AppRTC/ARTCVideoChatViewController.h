@@ -31,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewRightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewBottomConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *footerViewBottomConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *buttonContainerViewLeftConstraint;
 
 @property (strong, nonatomic) NSString *roomUrl;
@@ -43,7 +42,7 @@
 @property (assign, nonatomic) CGSize remoteVideoSize;
 @property (assign, nonatomic) BOOL isZoom; //used for double tap remote view
 
-//togle button parameter
+//toggle button parameter
 @property (assign, nonatomic) BOOL isAudioMute;
 @property (assign, nonatomic) BOOL isVideoMute;
 
