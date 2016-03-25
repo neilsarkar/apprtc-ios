@@ -14,8 +14,6 @@
 
 //Views, Labels, and Buttons
 @property (strong, nonatomic) IBOutlet RTCEAGLVideoView *remoteView;
-@property (strong, nonatomic) IBOutlet RTCEAGLVideoView *localView;
-@property (strong, nonatomic) IBOutlet UIView *footerView;
 @property (strong, nonatomic) IBOutlet UILabel *urlLabel;
 @property (strong, nonatomic) IBOutlet UIView *buttonContainerView;
 @property (strong, nonatomic) IBOutlet UIButton *audioButton;
@@ -27,10 +25,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *remoteViewRightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *remoteViewLeftConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *remoteViewBottomConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewWidthConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewHeightConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewRightConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *localViewBottomConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *buttonContainerViewLeftConstraint;
 
 @property (strong, nonatomic) NSString *roomUrl;

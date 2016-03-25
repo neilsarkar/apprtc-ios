@@ -36,7 +36,6 @@
     
     //RTCEAGLVideoViewDelegate provides notifications on video frame dimensions
     [self.remoteView setDelegate:self];
-    [self.localView setDelegate:self];
 
     //Getting Orientation change
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -45,19 +44,13 @@
                                                object:nil];
     
     // Automatically join room
-    [self setRoomName:@"dopiness"];
+    [self setRoomName:@"dopiness0"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
-    
-    //Display the Local View full screen while connecting to Room
-    [self.localViewBottomConstraint setConstant:0.0f];
-    [self.localViewRightConstraint setConstant:0.0f];
-    [self.localViewHeightConstraint setConstant:self.view.frame.size.height];
-    [self.localViewWidthConstraint setConstant:self.view.frame.size.width];
     
     //Connect to the room
     [self disconnect];
@@ -83,7 +76,6 @@
 }
 
 - (void)orientationChanged:(NSNotification *)notification{
-    [self videoView:self.localView didChangeVideoSize:self.localVideoSize];
     [self videoView:self.remoteView didChangeVideoSize:self.remoteVideoSize];
 }
 
@@ -98,10 +90,8 @@
 
 - (void)disconnect {
     if (self.client) {
-        if (self.localVideoTrack) [self.localVideoTrack removeRenderer:self.localView];
         if (self.remoteVideoTrack) [self.remoteVideoTrack removeRenderer:self.remoteView];
         self.localVideoTrack = nil;
-        [self.localView renderFrame:nil];
         self.remoteVideoTrack = nil;
         [self.remoteView renderFrame:nil];
         [self.client disconnect];
@@ -112,7 +102,6 @@
     if (self.remoteVideoTrack) [self.remoteVideoTrack removeRenderer:self.remoteView];
     self.remoteVideoTrack = nil;
     [self.remoteView renderFrame:nil];
-    [self videoView:self.localView didChangeVideoSize:self.localVideoSize];
     
 }
 
@@ -189,13 +178,7 @@
 }
 
 - (void)appClient:(ARDAppClient *)client didReceiveLocalVideoTrack:(RTCVideoTrack *)localVideoTrack {
-    if (self.localVideoTrack) {
-        [self.localVideoTrack removeRenderer:self.localView];
-        self.localVideoTrack = nil;
-        [self.localView renderFrame:nil];
-    }
-    self.localVideoTrack = localVideoTrack;
-    [self.localVideoTrack addRenderer:self.localView];
+    NSLog(@"Received local video track, ignoring it.");
 }
 
 - (void)appClient:(ARDAppClient *)client didReceiveRemoteVideoTrack:(RTCVideoTrack *)remoteVideoTrack {
@@ -209,14 +192,6 @@
         if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
             videoRect = CGRectMake(0.0f, 0.0f, self.view.frame.size.height/4.0f, self.view.frame.size.width/4.0f);
         }
-        CGRect videoFrame = AVMakeRectWithAspectRatioInsideRect(_localView.frame.size, videoRect);
-        
-        [self.localViewWidthConstraint setConstant:videoFrame.size.width];
-        [self.localViewHeightConstraint setConstant:videoFrame.size.height];
-        
-        
-        [self.localViewBottomConstraint setConstant:28.0f];
-        [self.localViewRightConstraint setConstant:28.0f];
         [self.view layoutIfNeeded];
     }];
 }
@@ -234,35 +209,11 @@
 #pragma mark - RTCEAGLVideoViewDelegate
 
 - (void)videoView:(RTCEAGLVideoView *)videoView didChangeVideoSize:(CGSize)size {
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     [UIView animateWithDuration:0.4f animations:^{
         CGFloat containerWidth = self.view.frame.size.width;
         CGFloat containerHeight = self.view.frame.size.height;
         CGSize defaultAspectRatio = CGSizeMake(4, 3);
-        if (videoView == self.localView) {
-            //Resize the Local View depending if it is full screen or thumbnail
-            self.localVideoSize = size;
-            CGSize aspectRatio = CGSizeEqualToSize(size, CGSizeZero) ? defaultAspectRatio : size;
-            CGRect videoRect = self.view.bounds;
-            if (self.remoteVideoTrack) {
-                videoRect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width/4.0f, self.view.frame.size.height/4.0f);
-                if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
-                    videoRect = CGRectMake(0.0f, 0.0f, self.view.frame.size.height/4.0f, self.view.frame.size.width/4.0f);
-                }
-            }
-            CGRect videoFrame = AVMakeRectWithAspectRatioInsideRect(aspectRatio, videoRect);
-
-            //Resize the localView accordingly
-            [self.localViewWidthConstraint setConstant:videoFrame.size.width];
-            [self.localViewHeightConstraint setConstant:videoFrame.size.height];
-            if (self.remoteVideoTrack) {
-                [self.localViewBottomConstraint setConstant:28.0f]; //bottom right corner
-                [self.localViewRightConstraint setConstant:28.0f];
-            } else {
-                [self.localViewBottomConstraint setConstant:containerHeight/2.0f - videoFrame.size.height/2.0f]; //center
-                [self.localViewRightConstraint setConstant:containerWidth/2.0f - videoFrame.size.width/2.0f]; //center
-            }
-        } else if (videoView == self.remoteView) {
+        if (videoView == self.remoteView) {
             //Resize Remote View
             self.remoteVideoSize = size;
             CGSize aspectRatio = CGSizeEqualToSize(size, CGSizeZero) ? defaultAspectRatio : size;
