@@ -44,7 +44,7 @@
                                                object:nil];
     
     // Automatically join room
-    [self setRoomName:@"dopiness0"];
+    [self setRoomName:@"dopiness2"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -219,12 +219,12 @@
             CGSize aspectRatio = CGSizeEqualToSize(size, CGSizeZero) ? defaultAspectRatio : size;
             CGRect videoRect = self.view.bounds;
             CGRect videoFrame = AVMakeRectWithAspectRatioInsideRect(aspectRatio, videoRect);
-            if (self.isZoom) {
-                //Set Aspect Fill
-                CGFloat scale = MAX(containerWidth/videoFrame.size.width, containerHeight/videoFrame.size.height);
-                videoFrame.size.width *= scale;
-                videoFrame.size.height *= scale;
-            }
+
+            //Set Aspect Fill
+            CGFloat scale = MAX(containerWidth/videoFrame.size.width, containerHeight/videoFrame.size.height);
+            videoFrame.size.width *= scale;
+            videoFrame.size.height *= scale;
+
             [self.remoteViewTopConstraint setConstant:containerHeight/2.0f - videoFrame.size.height/2.0f];
             [self.remoteViewBottomConstraint setConstant:containerHeight/2.0f - videoFrame.size.height/2.0f];
             [self.remoteViewLeftConstraint setConstant:containerWidth/2.0f - videoFrame.size.width/2.0f]; //center
