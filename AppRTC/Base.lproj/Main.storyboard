@@ -21,7 +21,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhI-9B-9dZ">
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhI-9B-9dZ">
                                             <rect key="frame" x="250" y="80" width="100" height="40"/>
                                             <color key="backgroundColor" red="0.25882352941176473" green="0.52156862745098043" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -48,7 +48,8 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="qhI-9B-9dZ" firstAttribute="leading" secondItem="6ns-Sh-XIS" secondAttribute="leading" constant="40" id="GQZ-EM-Ig7"/>
+                                        <constraint firstItem="qhI-9B-9dZ" firstAttribute="centerX" secondItem="6ns-Sh-XIS" secondAttribute="centerX" id="1iu-3N-Vi0"/>
+                                        <constraint firstItem="qhI-9B-9dZ" firstAttribute="centerY" secondItem="6ns-Sh-XIS" secondAttribute="centerY" id="9uY-jX-Fy9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
