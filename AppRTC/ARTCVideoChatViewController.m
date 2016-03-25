@@ -44,7 +44,8 @@
                                                  name:@"UIDeviceOrientationDidChangeNotification"
                                                object:nil];
     
-    
+    // Automatically join room
+    [self setRoomName:@"dopiness"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
