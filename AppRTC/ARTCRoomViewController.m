@@ -54,7 +54,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ARTCVideoChatViewController *viewController = (ARTCVideoChatViewController *)[segue destinationViewController];
-    [viewController setRoomName:sender];
+    [viewController setRoomName:@"neilio"];
 }
 
 #pragma mark - ARTCRoomTextInputViewCellDelegate Methods
