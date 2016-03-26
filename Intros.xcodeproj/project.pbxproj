@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C80AA761AAB5DF300F21FFA /* AppRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C80AA761AAB5DF300F21FFA /* Intros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C80AA7A1AAB5DF300F21FFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C80AA7B1AAB5DF300F21FFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C80AA7D1AAB5DF300F21FFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		5C80AA771AAB5DF300F21FFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C80AA761AAB5DF300F21FFA /* AppRTC.app */,
+				5C80AA761AAB5DF300F21FFA /* Intros.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,9 +130,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5C80AA751AAB5DF300F21FFA /* AppRTC */ = {
+		5C80AA751AAB5DF300F21FFA /* Intros */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C80AA991AAB5DF300F21FFA /* Build configuration list for PBXNativeTarget "AppRTC" */;
+			buildConfigurationList = 5C80AA991AAB5DF300F21FFA /* Build configuration list for PBXNativeTarget "Intros" */;
 			buildPhases = (
 				24ABD54F0D4EF6CABF005175 /* Check Pods Manifest.lock */,
 				5C80AA721AAB5DF300F21FFA /* Sources */,
@@ -145,9 +145,9 @@
 			);
 			dependencies = (
 			);
-			name = AppRTC;
+			name = Intros;
 			productName = AppRTC;
-			productReference = 5C80AA761AAB5DF300F21FFA /* AppRTC.app */;
+			productReference = 5C80AA761AAB5DF300F21FFA /* Intros.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -164,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5C80AA711AAB5DF300F21FFA /* Build configuration list for PBXProject "AppRTC" */;
+			buildConfigurationList = 5C80AA711AAB5DF300F21FFA /* Build configuration list for PBXProject "Intros" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -177,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C80AA751AAB5DF300F21FFA /* AppRTC */,
+				5C80AA751AAB5DF300F21FFA /* Intros */,
 			);
 		};
 /* End PBXProject section */
@@ -367,7 +367,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lib",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Intros;
 			};
 			name = Debug;
 		};
@@ -382,14 +382,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lib",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Intros;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C80AA711AAB5DF300F21FFA /* Build configuration list for PBXProject "AppRTC" */ = {
+		5C80AA711AAB5DF300F21FFA /* Build configuration list for PBXProject "Intros" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C80AA971AAB5DF300F21FFA /* Debug */,
@@ -398,7 +398,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C80AA991AAB5DF300F21FFA /* Build configuration list for PBXNativeTarget "AppRTC" */ = {
+		5C80AA991AAB5DF300F21FFA /* Build configuration list for PBXNativeTarget "Intros" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C80AA9A1AAB5DF300F21FFA /* Debug */,
