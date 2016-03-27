@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet RTCEAGLVideoView *remoteView;
 @property (strong, nonatomic) IBOutlet UILabel *urlLabel;
 @property (strong, nonatomic) IBOutlet UIButton *hangupButton;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 
 //Auto Layout Constraints used for animations
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *remoteViewTopConstraint;

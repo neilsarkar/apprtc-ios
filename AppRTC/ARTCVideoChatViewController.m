@@ -60,8 +60,11 @@
     self.timeLeft--;
     
     NSLog(@"%d", self.timeLeft);
-    if( self.timeLeft == 0 ) {
+    if( self.timeLeft > 0 ) {
+        self.timeLabel.text = [NSString stringWithFormat:@"00:%02d", self.timeLeft];
+    } else {
         [self.timer invalidate];
+        self.timeLabel.text = @"YA BURNT";
         NSLog(@"DONE");
     }
 }
