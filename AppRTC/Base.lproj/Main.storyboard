@@ -22,37 +22,7 @@
                                 <rect key="frame" x="199" y="200" width="202" height="202"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Gc-fyY" userLabel="Button Container View">
-                                <rect key="frame" x="20" y="220" width="40" height="160"/>
-                                <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRA-AT-ApW" userLabel="Audio Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="audioOn">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="audioButtonPressed:" destination="2x5-EQ-a7c" eventType="touchUpInside" id="Wkn-oq-FI9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76V-d2-VYt" userLabel="Video Button">
-                                        <rect key="frame" x="0.0" y="60" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="videoOn">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="videoButtonPressed:" destination="2x5-EQ-a7c" eventType="touchUpInside" id="17W-aZ-S7d"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="JCv-a1-f3A"/>
-                                    <constraint firstAttribute="width" constant="40" id="aRx-iH-5wU"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="https://apprtc.appspot.com/r/room" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-RQ-879">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-RQ-879">
                                 <rect key="frame" x="20" y="28" width="580" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fbZ-rW-rtx"/>
@@ -76,22 +46,17 @@
                         <constraints>
                             <constraint firstItem="yGf-SH-nK1" firstAttribute="top" secondItem="hBv-zP-oWI" secondAttribute="bottom" id="0G3-Sw-emm"/>
                             <constraint firstItem="hBv-zP-oWI" firstAttribute="leading" secondItem="K8r-3C-MXA" secondAttribute="leading" id="A0f-J1-3Oq"/>
-                            <constraint firstAttribute="centerY" secondItem="lf3-Gc-fyY" secondAttribute="centerY" id="NH6-bi-VaL"/>
                             <constraint firstItem="yGf-SH-nK1" firstAttribute="top" secondItem="GG8-K5-Ssv" secondAttribute="bottom" constant="22" id="P9v-1r-QRM"/>
                             <constraint firstItem="hBv-zP-oWI" firstAttribute="top" secondItem="K8r-3C-MXA" secondAttribute="top" id="RpQ-i1-veX"/>
                             <constraint firstItem="X4B-RQ-879" firstAttribute="top" secondItem="l8x-7U-gJE" secondAttribute="bottom" constant="8" id="WhL-dy-h11"/>
                             <constraint firstItem="GG8-K5-Ssv" firstAttribute="leading" secondItem="K8r-3C-MXA" secondAttribute="leadingMargin" id="bTw-Nc-lhy"/>
                             <constraint firstAttribute="trailing" secondItem="hBv-zP-oWI" secondAttribute="trailing" id="fje-pq-7U1"/>
-                            <constraint firstItem="lf3-Gc-fyY" firstAttribute="leading" secondItem="K8r-3C-MXA" secondAttribute="leading" constant="20" id="pYM-EH-dSy"/>
                             <constraint firstItem="X4B-RQ-879" firstAttribute="leading" secondItem="K8r-3C-MXA" secondAttribute="leadingMargin" id="qgJ-4G-tC8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="esD-JP-g86"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="audioButton" destination="aRA-AT-ApW" id="1Kn-aU-Rhe"/>
-                        <outlet property="buttonContainerView" destination="lf3-Gc-fyY" id="1DE-4K-IUU"/>
-                        <outlet property="buttonContainerViewLeftConstraint" destination="pYM-EH-dSy" id="jVw-QV-gdS"/>
                         <outlet property="hangupButton" destination="GG8-K5-Ssv" id="BAr-G8-qJf"/>
                         <outlet property="remoteView" destination="hBv-zP-oWI" id="0wa-4C-PFT"/>
                         <outlet property="remoteViewBottomConstraint" destination="0G3-Sw-emm" id="B0Y-Nz-bVh"/>
@@ -99,7 +64,6 @@
                         <outlet property="remoteViewRightConstraint" destination="fje-pq-7U1" id="NSW-fJ-HAM"/>
                         <outlet property="remoteViewTopConstraint" destination="RpQ-i1-veX" id="SMP-kJ-366"/>
                         <outlet property="urlLabel" destination="X4B-RQ-879" id="Y9h-q5-HVa"/>
-                        <outlet property="videoButton" destination="76V-d2-VYt" id="SFH-gg-Kmo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JK6-Bs-02N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,7 +91,5 @@
     </scenes>
     <resources>
         <image name="X" width="116" height="116"/>
-        <image name="audioOn" width="13" height="17"/>
-        <image name="videoOn" width="18" height="14"/>
     </resources>
 </document>

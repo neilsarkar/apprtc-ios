@@ -20,10 +20,6 @@
     self.isAudioMute = NO;
     self.isVideoMute = NO;
     
-    [self.audioButton.layer setCornerRadius:20.0f];
-    [self.videoButton.layer setCornerRadius:20.0f];
-    [self.hangupButton.layer setCornerRadius:20.0f];
-    
     //Add Tap to hide/show controls
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleButtonContainer)];
     [tapGestureRecognizer setNumberOfTapsRequired:1];
@@ -121,13 +117,6 @@
 
 - (void)toggleButtonContainer {
     [UIView animateWithDuration:0.3f animations:^{
-        if (self.buttonContainerViewLeftConstraint.constant <= -40.0f) {
-            [self.buttonContainerViewLeftConstraint setConstant:20.0f];
-            [self.buttonContainerView setAlpha:1.0f];
-        } else {
-            [self.buttonContainerViewLeftConstraint setConstant:-40.0f];
-            [self.buttonContainerView setAlpha:0.0f];
-        }
         [self.view layoutIfNeeded];
     }];
 }
@@ -136,35 +125,6 @@
     //Toggle Aspect Fill or Fit
     self.isZoom = !self.isZoom;
     [self videoView:self.remoteView didChangeVideoSize:self.remoteVideoSize];
-}
-
-- (IBAction)audioButtonPressed:(id)sender {
-    //TODO: this change not work on simulator (it will crash)
-    UIButton *audioButton = sender;
-    if (self.isAudioMute) {
-        [self.client unmuteAudioIn];
-        [audioButton setImage:[UIImage imageNamed:@"audioOn"] forState:UIControlStateNormal];
-        self.isAudioMute = NO;
-    } else {
-        [self.client muteAudioIn];
-        [audioButton setImage:[UIImage imageNamed:@"audioOff"] forState:UIControlStateNormal];
-        self.isAudioMute = YES;
-    }
-}
-
-- (IBAction)videoButtonPressed:(id)sender {
-    UIButton *videoButton = sender;
-    if (self.isVideoMute) {
-//        [self.client unmuteVideoIn];
-        [self.client swapCameraToFront];
-        [videoButton setImage:[UIImage imageNamed:@"videoOn"] forState:UIControlStateNormal];
-        self.isVideoMute = NO;
-    } else {
-        [self.client swapCameraToBack];
-        //[self.client muteVideoIn];
-        //[videoButton setImage:[UIImage imageNamed:@"videoOff"] forState:UIControlStateNormal];
-        self.isVideoMute = YES;
-    }
 }
 
 - (IBAction)hangupButtonPressed:(id)sender {
