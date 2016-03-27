@@ -60,13 +60,20 @@
     self.timeLeft--;
     
     NSLog(@"%d", self.timeLeft);
+    NSString *label;
     if( self.timeLeft > 0 ) {
-        self.timeLabel.text = [NSString stringWithFormat:@"00:%02d", self.timeLeft];
+        label = [NSString stringWithFormat:@"00:%02d", self.timeLeft];
     } else {
         [self.timer invalidate];
-        self.timeLabel.text = @"YA BURNT";
+        label = @"YA BURNT";
+//        TODO: disable button
         NSLog(@"DONE");
     }
+    
+    [UIView performWithoutAnimation:^{
+        [self.timeButton setTitle:label forState:UIControlStateNormal];
+        [self.timeButton layoutIfNeeded];
+    }];
 }
 
 - (void)joinNewRoom {
