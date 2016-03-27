@@ -42,9 +42,6 @@
                                              selector:@selector(orientationChanged:)
                                                  name:@"UIDeviceOrientationDidChangeNotification"
                                                object:nil];
-    
-    // Automatically join room
-    [self setRoomName:@"dopiness2"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,13 +49,28 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
-    //Connect to the room
-    [self disconnect];
-    self.client = [[ARDAppClient alloc] initWithDelegate:self];
-    [self.client setServerHostUrl:SERVER_HOST_URL];
-    [self.client connectToRoomWithId:self.roomName options:nil];
+    // Automatically join room
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    [self.urlLabel setText:self.roomUrl];
+    NSURL *URL = [NSURL URLWithString:@"http://localhost:8080/room"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            [self setRoomName:responseObject[@"room"]];
+            //Connect to the room
+            [self disconnect];
+            self.client = [[ARDAppClient alloc] initWithDelegate:self];
+            [self.client setServerHostUrl:SERVER_HOST_URL];
+            [self.client connectToRoomWithId:self.roomName options:nil];
+            
+            [self.urlLabel setText:self.roomName];
+        }
+    }];
+    [dataTask resume];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
