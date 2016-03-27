@@ -46,14 +46,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self joinNewRoom];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
-    
+}
+
+- (void)joinNewRoom {
     // Automatically join room
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:8080/room"];
+    NSURL *URL = [NSURL URLWithString:@"https://devnull.tindersandbox.com/room"];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -168,7 +170,7 @@
 - (IBAction)hangupButtonPressed:(id)sender {
     //Clean up
     [self disconnect];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self joinNewRoom];
 }
 
 
