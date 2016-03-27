@@ -43,5 +43,6 @@
 @property (assign, nonatomic) NSTimer *timer;
 
 - (IBAction)hangupButtonPressed:(id)sender;
+- (IBAction)extensionPressed:(id)sender;
 
 @end

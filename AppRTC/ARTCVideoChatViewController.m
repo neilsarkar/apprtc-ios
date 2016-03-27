@@ -20,6 +20,7 @@
     self.isAudioMute = NO;
     self.isVideoMute = NO;
     self.timeLeft = 20;
+    self.timeButton.enabled = NO;
     
     //Add Tap to hide/show controls
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleButtonContainer)];
@@ -44,11 +45,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self joinNewRoom];
-    [self startTimer];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)startTimer {
+    self.timeButton.enabled = YES;
+    self.timeLeft = 20;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   target:self
                                                 selector:@selector(count)
@@ -62,12 +64,12 @@
     NSLog(@"%d", self.timeLeft);
     NSString *label;
     if( self.timeLeft > 0 ) {
-        label = [NSString stringWithFormat:@"00:%02d", self.timeLeft];
+        label = [NSString stringWithFormat:@"%02d:%02d", self.timeLeft / 60, self.timeLeft % 60];
     } else {
         [self.timer invalidate];
         label = @"YA BURNT";
-//        TODO: disable button
-        NSLog(@"DONE");
+        self.timeButton.enabled = NO;
+        [self joinNewRoom];
     }
     
     [UIView performWithoutAnimation:^{
@@ -77,8 +79,9 @@
 }
 
 - (void)joinNewRoom {
-//    TODO: invalidate timer
+    NSLog(@"Joining new room");
     [self.timer invalidate];
+    
     // Automatically join room
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -165,6 +168,10 @@
     [self joinNewRoom];
 }
 
+- (IBAction)extensionPressed:(id)sender {
+    self.timeLeft += 120;
+}
+
 
 #pragma mark - ARDAppClientDelegate
 
@@ -198,6 +205,7 @@
         if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
             videoRect = CGRectMake(0.0f, 0.0f, self.view.frame.size.height/4.0f, self.view.frame.size.width/4.0f);
         }
+        [self startTimer];
         [self.view layoutIfNeeded];
     }];
 }

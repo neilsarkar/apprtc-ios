@@ -43,9 +43,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWL-hA-Qpy">
                                 <rect key="frame" x="534" y="545" width="46" height="30"/>
-                                <state key="normal" title="00:20">
+                                <state key="normal" title="Waiting...">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="extensionPressed:" destination="2x5-EQ-a7c" eventType="touchUpInside" id="WxJ-s6-Z7o"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
