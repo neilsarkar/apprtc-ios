@@ -37,6 +37,10 @@
 @property (assign, nonatomic) BOOL isAudioMute;
 @property (assign, nonatomic) BOOL isVideoMute;
 
+//Time left in seconds
+@property (assign, nonatomic) int timeLeft;
+@property (assign, nonatomic) NSTimer *timer;
+
 - (IBAction)hangupButtonPressed:(id)sender;
 
 @end

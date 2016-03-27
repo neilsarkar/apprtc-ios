@@ -19,6 +19,7 @@
     self.isZoom = NO;
     self.isAudioMute = NO;
     self.isVideoMute = NO;
+    self.timeLeft = 20;
     
     //Add Tap to hide/show controls
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleButtonContainer)];
@@ -43,10 +44,31 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self joinNewRoom];
+    [self startTimer];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)startTimer {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(count)
+                                                userInfo:nil
+                                                 repeats:YES];
+}
+
+- (void)count {
+    self.timeLeft--;
+    
+    NSLog(@"%d", self.timeLeft);
+    if( self.timeLeft == 0 ) {
+        [self.timer invalidate];
+        NSLog(@"DONE");
+    }
+}
+
 - (void)joinNewRoom {
+//    TODO: invalidate timer
+    [self.timer invalidate];
     // Automatically join room
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
